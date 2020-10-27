@@ -33,6 +33,7 @@ while True:
         print(numOfPacketsRecv_String)
         data = connection.recv(1024)
         file.write(data)
+        # adding conditionals to send and receive seqNums and ACKs
     connection.close()
     file.close()
 

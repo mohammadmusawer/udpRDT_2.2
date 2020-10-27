@@ -31,13 +31,14 @@ def transmitFile(hostAddress, fileName):
     encodedStringNumOfPackets = stringNumOfPackets.encode()
     socketVar.send(encodedStringNumOfPackets)
 
-    #add code here
+
     # loop to keep sending packets and prints the packet number that is being sent
     for x in range(1, numOfPackets + 1):
         numOfPacketsSend_String = f"Sending packet #{x} the server..."
         print(numOfPacketsSend_String)
         data = fileToSend.read(1024)
         socketVar.send(data)
+        # adding a conditional here to send/receive ACKs and seq nums
     fileToSend.close()
 
     # displays that the data has been sent successfully
