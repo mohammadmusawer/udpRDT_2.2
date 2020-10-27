@@ -31,6 +31,7 @@ def transmitFile(hostAddress, fileName):
     encodedStringNumOfPackets = stringNumOfPackets.encode()
     socketVar.send(encodedStringNumOfPackets)
 
+    #add code here
     # loop to keep sending packets and prints the packet number that is being sent
     for x in range(1, numOfPackets + 1):
         numOfPacketsSend_String = f"Sending packet #{x} the server..."
