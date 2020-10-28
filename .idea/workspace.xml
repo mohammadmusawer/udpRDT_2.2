@@ -26,9 +26,7 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="27216af8-5692-41fb-b4d9-885d9547eb62" name="Default Changelist" comment="Wrote code for sequence numbers and acks to output">
-      <change beforePath="$PROJECT_DIR$/adventuretime.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/adventuretime.jpg" afterDir="false" />
-    </list>
+    <list default="true" id="27216af8-5692-41fb-b4d9-885d9547eb62" name="Default Changelist" comment="Wrote code for sequence numbers and acks to output" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -105,7 +103,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/server.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\mssah\PycharmProjects\rdt2.2\ServerSide\server.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -151,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603845243417</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Wrote code for sequence numbers and acks to output">
+      <created>1603845470758</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1603845470758</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -209,14 +214,14 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1899" height="167" key="GridCell.Tab.0.right/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1603844991301" />
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1603845248121">
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1603845477537">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1603845248121" />
-    <state x="777" y="439" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603840298680">
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1603845477537" />
+    <state x="777" y="439" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603845803070">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="777" y="439" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1603840298680" />
+    <state x="777" y="439" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1603845803070" />
     <state x="761" y="431" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1603838917000">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
