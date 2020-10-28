@@ -11,6 +11,8 @@ def transmitFile(hostAddress, fileName):
     port = 8090
     socketVar.connect((hostAddress, port))
 
+
+
     # open file in read-binary
     fileToSend = open(fileName, 'rb')
 
@@ -35,10 +37,39 @@ def transmitFile(hostAddress, fileName):
     # loop to keep sending packets and prints the packet number that is being sent
     for x in range(1, numOfPackets + 1):
         numOfPacketsSend_String = f"Sending packet #{x} to the server..."
+
+        # timeout after the fstring to set up for the acks
+        socketVar.settimeout(15.0)
+
+        # sequence number variables
+        sequenceNumber_string = "Sequence number: "
+        sqnZero = 0
+        sqnOne = 1
+
+        # ack variables
+        ack_string = "Ack: "
+        ackZero = 0
+        ackOne = 1
+
         print(numOfPacketsSend_String)
+
         data = fileToSend.read(1024)
         socketVar.send(data)
-        # adding a conditional here to send/receive ACKs and seq nums
+
+        # adding a conditional here to send/receive seq nums
+        if x % 2 == 0:
+            print(f"{sequenceNumber_string}{sqnOne}")
+        elif x % 2 != 0:
+            print(f"{sequenceNumber_string}{sqnZero}")
+
+        # adding a conditional statement for acks
+        if x % 2 == 0:
+            print(f"{ack_string}{ackOne}")
+        elif x % 2 != 0:
+            print(f"{ack_string}{ackZero}")
+
+        # do while loop to test if acks are teh same as seq nums
+
     fileToSend.close()
 
     # displays that the data has been sent successfully
