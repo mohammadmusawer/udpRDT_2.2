@@ -68,7 +68,7 @@ def transmitFile(hostAddress, fileName):
         elif x % 2 != 0:
             print(f"{ack_string}{ackZero}")
 
-        # do while loop to test if acks are teh same as seq nums
+        # need a do while loop
 
     fileToSend.close()
 
