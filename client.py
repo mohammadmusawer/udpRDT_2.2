@@ -16,9 +16,17 @@ def calculateChecksum(packetData):
     return int(checksum)
 
 def corruptPacket(packetData):
+    #corrupts data by generating a random number and xoring it with the data
     corruption = random.randint(0,pow(2,1024))
     corruptedData = packetData ^ corruption
     return corruptedData
+
+def makePacket(packetData, seqNumber):
+    #takes the data and seq number and converts it into a packet, including checksum.
+    dataChecksum = calculateChecksum(packetData)
+    payload = seqNumber + dataChecksum + packetData
+    return payload
+
 
 def transmitFile(hostAddress, fileName):
     # function to transmit the file. Contains the code copy/pasted from phase1

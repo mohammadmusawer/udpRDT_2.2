@@ -7,6 +7,8 @@ port = 8090
 socketVar.bind((hostName, port))
 socketVar.listen(1)  # wait for 1 incoming connection
 
+
+
 print(hostName)
 def calculateChecksum(packetData):
     checksumTotal = 0
@@ -19,6 +21,8 @@ def calculateChecksum(packetData):
     checksumInverse = checksumTotal % 256
     checksum = 256 - checksumInverse
     return int(checksum)
+
+
 
 # loops to accept the incoming connection and file being sent from the client
 while True:
@@ -42,8 +46,26 @@ while True:
     for x in range(1, numOfPackets + 1):
         numOfPacketsRecv_String = f"Receiving packet #{x} from client..."
         print(numOfPacketsRecv_String)
-        data = connection.recv(1024)
-        file.write(data)
+
+       #receive the packet and extract information from it
+        rcvdPacket = connection.recv(1024)
+        rcvdSeqNumber = rcvdPacket[0:1]
+        rcvdChecksum = rcvdPacket[1:9]
+        rcvdData = rcvdPacket[10:]
+
+        #determine if the packet was received properly via checksum. If yes, send ack, else send nack.
+        calcChecksum = calculateChecksum(rcvdData)
+        if(calcChecksum == rcvdChecksum)
+            file.write(rcvdData)
+            positiveAck = rcvdSeqNumber + rcvdSeqNumber + rcvdSeqNumber
+            encodedPositiveAck = positiveAck.encode()
+            connection.send(encodedPositiveAck)
+        else
+            negativeAck = !rcvdSeqNumber + !rcvdSeqNumber + !rcvdSeqNumber
+            encodedNegativeAck = negativeAck.encode()
+            connection.send(encodedNegativeAck)
+
+
         # adding conditionals to send and receive seqNums and ACKs
     connection.close()
     file.close()
