@@ -8,6 +8,17 @@ socketVar.bind((hostName, port))
 socketVar.listen(1)  # wait for 1 incoming connection
 
 print(hostName)
+def calculateChecksum(packetData):
+    checksumTotal = 0
+    while packetData > 0:
+        currByte = packetData % 256
+        checksumTotal += currByte
+        packetData -= currByte
+        packetData = packetData / 256
+        print(packetData)
+    checksumInverse = checksumTotal % 256
+    checksum = 256 - checksumInverse
+    return int(checksum)
 
 # loops to accept the incoming connection and file being sent from the client
 while True:

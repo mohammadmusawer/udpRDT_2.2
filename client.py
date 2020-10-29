@@ -2,6 +2,19 @@ import socket                    # module to establish connection
 import tkinter as tk             # module to create GUI
 import time                      # module for time funcs such as .sleep()
 
+def calculateChecksum(packetData):
+    checksumTotal = 0
+    while packetData > 0:
+        currByte = packetData % 256
+        checksumTotal += currByte
+        packetData -= currByte
+        packetData = packetData / 256
+        print(packetData)
+    checksumInverse = checksumTotal % 256
+    checksum = 256 - checksumInverse
+    return int(checksum)
+
+
 def transmitFile(hostAddress, fileName):
     # function to transmit the file. Contains the code copy/pasted from phase1
     # takes as input the host address to send the file to and the name for the file upon arrival
