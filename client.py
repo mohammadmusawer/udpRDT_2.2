@@ -1,6 +1,7 @@
 import socket                    # module to establish connection
 import tkinter as tk             # module to create GUI
 import time                      # module for time funcs such as .sleep()
+import random
 
 def calculateChecksum(packetData):
     checksumTotal = 0
@@ -14,6 +15,10 @@ def calculateChecksum(packetData):
     checksum = 256 - checksumInverse
     return int(checksum)
 
+def corruptPacket(packetData):
+    corruption = random.randint(0,pow(2,1024))
+    corruptedData = packetData ^ corruption
+    return corruptedData
 
 def transmitFile(hostAddress, fileName):
     # function to transmit the file. Contains the code copy/pasted from phase1
