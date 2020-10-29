@@ -55,13 +55,13 @@ while True:
 
         #determine if the packet was received properly via checksum. If yes, send ack, else send nack.
         calcChecksum = calculateChecksum(rcvdData)
-        if(calcChecksum == rcvdChecksum)
+        if(calcChecksum == rcvdChecksum):
             file.write(rcvdData)
-            positiveAck = rcvdSeqNumber + rcvdSeqNumber + rcvdSeqNumber
+            positiveAck = str(rcvdSeqNumber) + str(rcvdSeqNumber) + str(rcvdSeqNumber)
             encodedPositiveAck = positiveAck.encode()
             connection.send(encodedPositiveAck)
-        else
-            negativeAck = !rcvdSeqNumber + !rcvdSeqNumber + !rcvdSeqNumber
+        else:
+            negativeAck = str(~rcvdSeqNumber) + str(~rcvdSeqNumber) + str(~rcvdSeqNumber)
             encodedNegativeAck = negativeAck.encode()
             connection.send(encodedNegativeAck)
 
