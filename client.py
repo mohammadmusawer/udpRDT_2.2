@@ -54,7 +54,6 @@ def rdt_rcv(rcvpkt):
 
     # otherwise corruption and nack detected so resend the previous packet
     else:
-        calculateChecksum()
         return False
 
 def transmitFile(hostAddress, fileName):
