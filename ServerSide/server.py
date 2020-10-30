@@ -1,5 +1,4 @@
 import socket  # module to establish connection
-import time
 
 
 # initializes the socket obj, hostname and port and binds it to the server
