@@ -26,9 +26,8 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="27216af8-5692-41fb-b4d9-885d9547eb62" name="Default Changelist" comment="wrote while loop to keep looping until both received and calculated checksums are equal">
+    <list default="true" id="27216af8-5692-41fb-b4d9-885d9547eb62" name="Default Changelist" comment="Finished the while loop for retransmission in server.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ServerSide/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/ServerSide/server.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +241,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604094684474</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Finished the while loop for retransmission in server.py">
+      <created>1604097453386</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1604097453386</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -280,7 +286,8 @@
     <MESSAGE value="testing" />
     <MESSAGE value="changed the picture to a bigger size &gt;500kb" />
     <MESSAGE value="wrote while loop to keep looping until both received and calculated checksums are equal" />
-    <option name="LAST_COMMIT_MESSAGE" value="wrote while loop to keep looping until both received and calculated checksums are equal" />
+    <MESSAGE value="Finished the while loop for retransmission in server.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished the while loop for retransmission in server.py" />
   </component>
   <component name="WindowStateProjectService">
     <state x="698" y="349" key="#Notifications" timestamp="1604082395486">
@@ -295,22 +302,22 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="740" y="266" key="FileChooserDialogImpl/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1604081308593" />
-    <state width="1899" height="218" key="GridCell.Tab.0.bottom" timestamp="1604094407751">
+    <state width="1899" height="218" key="GridCell.Tab.0.bottom" timestamp="1604098302966">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="218" key="GridCell.Tab.0.bottom/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1604094407751" />
-    <state width="1899" height="218" key="GridCell.Tab.0.center" timestamp="1604094407751">
+    <state width="1899" height="218" key="GridCell.Tab.0.bottom/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1604098302966" />
+    <state width="1899" height="218" key="GridCell.Tab.0.center" timestamp="1604098302966">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="218" key="GridCell.Tab.0.center/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1604094407751" />
-    <state width="1899" height="218" key="GridCell.Tab.0.left" timestamp="1604094407751">
+    <state width="1899" height="218" key="GridCell.Tab.0.center/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1604098302966" />
+    <state width="1899" height="218" key="GridCell.Tab.0.left" timestamp="1604098302965">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="218" key="GridCell.Tab.0.left/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1604094407751" />
-    <state width="1899" height="218" key="GridCell.Tab.0.right" timestamp="1604094407751">
+    <state width="1899" height="218" key="GridCell.Tab.0.left/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1604098302965" />
+    <state width="1899" height="218" key="GridCell.Tab.0.right" timestamp="1604098302966">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1899" height="218" key="GridCell.Tab.0.right/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1604094407751" />
+    <state width="1899" height="218" key="GridCell.Tab.0.right/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1604098302966" />
     <state width="1899" height="352" key="GridCell.Tab.1.bottom" timestamp="1604031130898">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -331,15 +338,15 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="184" y="87" key="MergeDialog/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1604083069991" />
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1604094689891">
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1604097474236">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1604094689891" />
-    <state x="777" y="439" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604083051364">
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1604097474236" />
+    <state x="777" y="439" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604098430061">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="-1143" y="439" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1050/-1920.0.1920.1050@-1920.0.1920.1050" timestamp="1604080159139" />
-    <state x="777" y="439" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1604083051364" />
+    <state x="777" y="439" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1604098430061" />
     <state x="522" y="254" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1604019142449">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

@@ -17,7 +17,7 @@ def calculateChecksum(packetData):
 
 def corruptPacket(packetData):
     #corrupts data by generating a random number and xoring it with the data
-    corruption = random.randint(0,pow(2,1024))
+    corruption = random.randint(0, pow(2, 1024))
     corruptedData = packetData ^ corruption
     return corruptedData
 
@@ -26,7 +26,7 @@ def makePacket(packetData, seqNumber):
     #also encodes the payload as well
     dataChecksum = calculateChecksum(packetData)
     errorRate = 0
-    errorCalc = random.randint(0,99)
+    errorCalc = random.randint(0, 99)
     if errorCalc < errorRate:
         packetData = corruptPacket(packetData)
     payload = seqNumber + dataChecksum + packetData
@@ -64,16 +64,16 @@ def transmitFile(hostAddress, fileName):
     encodedStringNumOfPackets = stringNumOfPackets.encode()
     socketVar.send(encodedStringNumOfPackets)
 
-    seqNumber = 0 #initialize the sequence number
+    seqNumber = 0  #initialize the sequence number
 
     # loop to keep sending packets and prints the packet number that is being sent
     for x in range(1, numOfPackets + 1):
         numOfPacketsSend_String = f"Sending packet #{x} to the server..."
 
-        data = fileToSend.read(1024) #read data from the file
-        madePacket = makePacket(data, seqNumber) #make the packet we need to send
-        encodedPacket = madePacket.encode() #encode it
-        socketVar.send(encodedPacket) #send it
+        data = fileToSend.read(1024)  #read data from the file
+        madePacket = makePacket(data, seqNumber)  #make the packet we need to send
+        encodedPacket = madePacket.encode()  #encode it
+        socketVar.send(encodedPacket)  #send it
 
         #receive an ack from the server
         ackFromServer = socketVar.recv(3)
