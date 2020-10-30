@@ -26,12 +26,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="27216af8-5692-41fb-b4d9-885d9547eb62" name="Default Changelist" comment="changed the picture to a bigger size &gt;500kb">
-      <change afterPath="$PROJECT_DIR$/ServerSide/intothespiderverse.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/rdt2.2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/rdt2.2.iml" afterDir="false" />
+    <list default="true" id="27216af8-5692-41fb-b4d9-885d9547eb62" name="Default Changelist" comment="wrote while loop to keep looping until both received and calculated checksums are equal">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ServerSide/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/ServerSide/server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/client.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -238,7 +235,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604079072492</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="wrote while loop to keep looping until both received and calculated checksums are equal">
+      <created>1604094684474</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1604094684474</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -275,7 +279,8 @@
     <MESSAGE value="added comments" />
     <MESSAGE value="testing" />
     <MESSAGE value="changed the picture to a bigger size &gt;500kb" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed the picture to a bigger size &gt;500kb" />
+    <MESSAGE value="wrote while loop to keep looping until both received and calculated checksums are equal" />
+    <option name="LAST_COMMIT_MESSAGE" value="wrote while loop to keep looping until both received and calculated checksums are equal" />
   </component>
   <component name="WindowStateProjectService">
     <state x="698" y="349" key="#Notifications" timestamp="1604082395486">
@@ -326,10 +331,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="184" y="87" key="MergeDialog/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1604083069991" />
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1604079076740">
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1604094689891">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1604079076740" />
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050/-1920.0.1920.1050@0.0.1920.1050" timestamp="1604094689891" />
     <state x="777" y="439" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604083051364">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

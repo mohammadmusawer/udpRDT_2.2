@@ -69,6 +69,13 @@ while True:
                 encodedNegativeAck = negativeAck.encode()
                 connection.send(encodedNegativeAck)
 
+                rcvdPacket = connection.recv(1033)
+                rcvdSeqNumber = rcvdPacket[0:1]
+                rcvdChecksum = rcvdPacket[1:9]
+                rcvdData = rcvdPacket[10:]
+
+                calcChecksum = calculateChecksum(rcvdData)
+
 
     # adding conditionals to send and receive seqNums and ACKs
     connection.close()
