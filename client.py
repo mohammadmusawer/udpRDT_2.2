@@ -30,8 +30,7 @@ def makePacket(packetData, seqNumber):
     if errorCalc < errorRate:
         packetData = corruptPacket(packetData)
     payload = seqNumber + dataChecksum + packetData
-    payloadEncoded = payload.encode()
-    return payloadEncoded
+    return payload
 
 
 def transmitFile(hostAddress, fileName):
