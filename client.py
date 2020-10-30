@@ -47,7 +47,7 @@ def rdt_rcv(rcvpkt):
     global currentSeq
     global pckData
 
-    # if packet is not corrupt and is ack'ed send the next packet (current ack + 1)
+    # if packet is not corrupt and is ack'ed send the next packet (current seq + 1)
     if not corruptPacket(rcvpkt) and isACK(rcvpkt, currentAck + 1):
         currentSeq = (currentSeq + 1) % 2
         return True
