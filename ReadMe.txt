@@ -19,6 +19,15 @@ Click the exit button
 Close the server process
 A copy of the sent file will now be located in the server side folder.
 
+Different Scenarios:
+In the No loss case, the client and server will behave as it did in the previous phase where it just sends the packets
+one at a time. In this case the client and server will be sending each other ACKs and sequence numbers to confirm
+the correct packets are being received and puting the packets in the correct order.
+In the Ack bit error case, a while loop was implemented on the server to continously send negative ACKs to the client
+until the correct ACK and packet comes into the server.
+In the Data bit error case, the client will check the the correct sequence number is received, if not or
+if the packet is corrupted the client will retransmit the the proper packet to the server.
+
 Additonal information:
 The program is single directional, only sending a file from client to server.
 The server is able to receive files repeatedly and does not auto-terminate.
