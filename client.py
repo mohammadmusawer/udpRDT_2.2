@@ -3,7 +3,7 @@ import tkinter as tk             # module to create GUI
 import time                      # module for time funcs such as .sleep()
 import random
 
-
+#initializing seq and ack values
 currentSeq = 0
 currentAck = 0
 
@@ -51,14 +51,13 @@ def rdt_rcv(rcvpkt):
     global currentSeq
     global pckData
 
-    # if packet is not corrupt and is ack'ed send the next packet (current ack + 1)
+    # if packet is not corrupt and is ack'ed send the next packet (current seq + 1)
     if not corruptPacket(rcvpkt) and isACK(rcvpkt, currentAck + 1):
         currentSeq = (currentSeq + 1) % 2
         return True
 
     # otherwise corruption and nack detected so resend the previous packet
     else:
-        calculateChecksum()
         return False
 
 def transmitFile(hostAddress, fileName):
