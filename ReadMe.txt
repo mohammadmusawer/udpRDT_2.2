@@ -28,6 +28,8 @@ until the correct ACK and packet comes into the server.
 In the Data bit error case, the client will check the the correct sequence number is received, if not or
 if the packet is corrupted the client will retransmit the the proper packet to the server.
 
+
+
 Additonal information:
 The program is single directional, only sending a file from client to server.
 The server is able to receive files repeatedly and does not auto-terminate.
