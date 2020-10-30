@@ -89,10 +89,46 @@ def transmitFile(hostAddress, fileName):
     encodedStringNumOfPackets = stringNumOfPackets.encode()
     socketVar.send(encodedStringNumOfPackets)
 
+    seqNumber = 0 #initialize the sequence number
 
     # loop to keep sending packets and prints the packet number that is being sent
     for x in range(1, numOfPackets + 1):
         numOfPacketsSend_String = f"Sending packet #{x} to the server..."
+
+        data = fileToSend.read(1024) #read data from the file
+        madePacket = makePacket(data, seqNumber) #make the packet we need to send
+        encodedPacket = madePacket.encode() #encode it
+        socketVar.send(encodedPacket) #send it
+
+        #receive an ack from the server
+        ackFromServer = socketVar.recv(3)
+        receivedAck = int(ackFromServer.decode())
+
+        #decode the ack
+        if (receivedAck == 110) or (receivedAck == 101) or (receivedAck == 11) or (receivedAck == 111):
+            decodedAck = 1
+        else:
+            decodedAck = 0
+
+        #if the received ack does not match the sent sequence number, retransmit and repeat until they do.
+        while decodedAck != seqNumber:
+            madePacket = makePacket(data, seqNumber)
+            encodedPacket = madePacket.encode()
+            socketVar.send(encodedPacket)
+
+            ackFromServer = socketVar.recv(3)
+            receivedAck = int(ackFromServer.decode())
+            if (receivedAck == 110) or (receivedAck == 101) or (receivedAck == 11) or (receivedAck == 111):
+                decodedAck = 1
+            else:
+                decodedAck = 0
+
+        #flip the sequence number
+        seqNumber = not(seqNumber)
+
+
+
+
 
     fileToSend.close()
 

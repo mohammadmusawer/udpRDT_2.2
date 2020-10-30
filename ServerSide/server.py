@@ -48,7 +48,7 @@ while True:
         print(numOfPacketsRecv_String)
 
        #receive the packet and extract information from it
-        rcvdPacket = connection.recv(1024)
+        rcvdPacket = connection.recv(1033)
         rcvdSeqNumber = rcvdPacket[0:1]
         rcvdChecksum = rcvdPacket[1:9]
         rcvdData = rcvdPacket[10:]
