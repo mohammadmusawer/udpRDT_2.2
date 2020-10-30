@@ -99,7 +99,7 @@ def transmitFile(hostAddress, fileName):
                 decodedAck = 0
 
         #flip the sequence number
-        seqNumber = not(seqNumber)
+        seqNumber = not seqNumber
 
         # timeout after the fstring to set up for the acks
         socketVar.settimeout(15.0)
