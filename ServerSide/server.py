@@ -1,6 +1,4 @@
 import socket  # module to establish connection
-import time
-
 
 # initializes the socket obj, hostname and port and binds it to the server
 socketVar = socket.socket()
@@ -8,7 +6,8 @@ hostName = socket.gethostname()
 port = 8090
 socketVar.bind((hostName, port))
 socketVar.listen(1)  # wait for 1 incoming connection
-sequenceNumber = 0
+
+
 
 print(hostName)
 def calculateChecksum(packetData):
@@ -22,6 +21,7 @@ def calculateChecksum(packetData):
     checksumInverse = checksumTotal % 256
     checksum = 256 - checksumInverse
     return int(checksum)
+
 
 
 # loops to accept the incoming connection and file being sent from the client
@@ -54,17 +54,23 @@ while True:
         rcvdData = rcvdPacket[10:]
 
         #determine if the packet was received properly via checksum. If yes, send ack, else send nack.
-        calcChecksum = calculateChecksum(rcvdData)
-        if(calcChecksum == rcvdChecksum):
-            file.write(rcvdData)
-            positiveAck = str(rcvdSeqNumber) + str(rcvdSeqNumber) + str(rcvdSeqNumber)
-            encodedPositiveAck = positiveAck.encode()
-            connection.send(encodedPositiveAck)
-        else:
-            negativeAck = str(~rcvdSeqNumber) + str(~rcvdSeqNumber) + str(~rcvdSeqNumber)
-            encodedNegativeAck = negativeAck.encode()
-            connection.send(encodedNegativeAck)
 
+        calcChecksum = calculateChecksum(rcvdData)
+        # keep looping until the calculated checksum equals the received checksum
+        while True:
+            if(calcChecksum == rcvdChecksum):
+                file.write(rcvdData)
+                positiveAck = str(rcvdSeqNumber) + str(rcvdSeqNumber) + str(rcvdSeqNumber)
+                encodedPositiveAck = positiveAck.encode()
+                connection.send(encodedPositiveAck)
+                break
+            else:
+                negativeAck = str(~rcvdSeqNumber) + str(~rcvdSeqNumber) + str(~rcvdSeqNumber)
+                encodedNegativeAck = negativeAck.encode()
+                connection.send(encodedNegativeAck)
+
+
+    # adding conditionals to send and receive seqNums and ACKs
     connection.close()
     file.close()
 
