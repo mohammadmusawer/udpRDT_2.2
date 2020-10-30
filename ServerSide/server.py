@@ -65,7 +65,6 @@ while True:
             encodedNegativeAck = negativeAck.encode()
             connection.send(encodedNegativeAck)
 
-
         # adding conditionals to send and receive seqNums and ACKs
     connection.close()
     file.close()
