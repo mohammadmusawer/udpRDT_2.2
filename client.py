@@ -28,6 +28,10 @@ def corruptPacket(packetData):
 def makePacket(packetData, seqNumber):
     #takes the data and seq number and converts it into a packet, including checksum.
     dataChecksum = calculateChecksum(packetData)
+    errorRate = 0
+    errorCalc = random.randint(0,99)
+    if errorCalc < errorRate:
+        packetData = corruptPacket(packetData)
     payload = seqNumber + dataChecksum + packetData
     return payload
 
