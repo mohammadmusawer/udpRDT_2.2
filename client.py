@@ -3,7 +3,7 @@ import tkinter as tk             # module to create GUI
 import time                      # module for time funcs such as .sleep()
 import random
 
-
+#initializing seq and ack values
 currentSeq = 0
 currentAck = 0
 
