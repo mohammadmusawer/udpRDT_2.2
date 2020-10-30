@@ -80,7 +80,7 @@ def transmitFile(hostAddress, fileName):
         receivedAck = int(ackFromServer.decode())
 
         #decode the ack
-        if (receivedAck == 110) or (receivedAck == 101) or (receivedAck == 11) or (receivedAck == 111):
+        if (receivedAck == 110) or (receivedAck == 101) or (receivedAck == 11) or (receivedAck == 111):56
             decodedAck = 1
         else:
             decodedAck = 0
