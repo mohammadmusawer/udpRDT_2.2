@@ -3,6 +3,10 @@ import tkinter as tk             # module to create GUI
 import time                      # module for time funcs such as .sleep()
 import random
 
+
+currentSeq = 0
+currentAck = 0
+
 def calculateChecksum(packetData):
     checksumTotal = 0
     while packetData > 0:
@@ -17,7 +21,7 @@ def calculateChecksum(packetData):
 
 def corruptPacket(packetData):
     #corrupts data by generating a random number and xoring it with the data
-    corruption = random.randint(0,pow(2,1024))
+    corruption = random.randint(0, pow(2, 1024))
     corruptedData = packetData ^ corruption
     return corruptedData
 
@@ -27,6 +31,31 @@ def makePacket(packetData, seqNumber):
     payload = seqNumber + dataChecksum + packetData
     return payload
 
+# function that detects if received packet is equal to the sent ack and the current seq number
+def isACK(rcvpkt, ackVal):
+    global currentAck
+    global currentSeq
+
+    if rcvpkt[0] == ackVal and rcvpkt[1] == currentSeq:
+        return True
+    else:
+        return False
+
+# function that detects if ack and seq number is correct, if not then resend packet
+def rdt_rcv(rcvpkt):
+    global currentAck
+    global currentSeq
+    global pckData
+
+    # if packet is not corrupt and is ack'ed send the next packet (current ack + 1)
+    if not corruptPacket(rcvpkt) and isACK(rcvpkt, currentAck + 1):
+        currentSeq = (currentSeq + 1) % 2
+        return True
+
+    # otherwise corruption and nack detected so resend the previous packet
+    else:
+        calculateChecksum()
+        return False
 
 def transmitFile(hostAddress, fileName):
     # function to transmit the file. Contains the code copy/pasted from phase1
@@ -36,8 +65,6 @@ def transmitFile(hostAddress, fileName):
     socketVar = socket.socket()
     port = 8090
     socketVar.connect((hostAddress, port))
-
-
 
     # open file in read-binary
     fileToSend = open(fileName, 'rb')
@@ -63,38 +90,6 @@ def transmitFile(hostAddress, fileName):
     # loop to keep sending packets and prints the packet number that is being sent
     for x in range(1, numOfPackets + 1):
         numOfPacketsSend_String = f"Sending packet #{x} to the server..."
-
-        # timeout after the fstring to set up for the acks
-        socketVar.settimeout(15.0)
-
-        # sequence number variables
-        sequenceNumber_string = "Sequence number: "
-        sqnZero = 0
-        sqnOne = 1
-
-        # ack variables
-        ack_string = "Ack: "
-        ackZero = 0
-        ackOne = 1
-
-        print(numOfPacketsSend_String)
-
-        data = fileToSend.read(1024)
-        socketVar.send(data)
-
-        # adding a conditional here to send/receive seq nums
-        if x % 2 == 0:
-            print(f"{sequenceNumber_string}{sqnOne}")
-        elif x % 2 != 0:
-            print(f"{sequenceNumber_string}{sqnZero}")
-
-        # adding a conditional statement for acks
-        if x % 2 == 0:
-            print(f"{ack_string}{ackOne}")
-        elif x % 2 != 0:
-            print(f"{ack_string}{ackZero}")
-
-        # need a do while loop
 
     fileToSend.close()
 
