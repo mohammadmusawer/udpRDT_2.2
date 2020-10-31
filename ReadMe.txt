@@ -23,15 +23,11 @@ Different Scenarios:
 In the No loss case, the client and server will behave as it did in the previous phase where it just sends the packets
 one at a time. In this case the client and server will be sending each other ACKs and sequence numbers to confirm
 the correct packets are being received and puting the packets in the correct order.
-In the Ack bit error case, a while loop was implemented on the server to continously send negative ACKs to the client
-until the correct ACK and packet comes into the server.
-In the Data bit error case, the client will check the the correct sequence number is received, if not or
-if the packet is corrupted the client will retransmit the the proper packet to the server.
-
-
+Ack bit error cases were not properly implemented (see design document for further information). However, 3 bit error codes were implemented to transmit the single bit sequence numbers. This allows for up to 1 bit to be corrupted while still functioning properly.
+In the data bit error case, the checksums will fail to match on the server side and the server will send a nack (previous sequence number ack) and the client will retransmit the file. This repeats until a proper checksum check occurs and a proper ack is received.
 
 Additonal information:
 The program is single directional, only sending a file from client to server.
-The server is able to receive files repeatedly and does not auto-terminate.
+In order to alter the error rate of sent packets, edit line 4 of the makepacket function "error rate = x" where x is the percent of packets that are corrupted.
 Any file type can be used, only .jpg and .bmp files were tested.
 The program uses port 8090
