@@ -12,16 +12,13 @@ sequenceNumber = 0
 print(hostName)
 def calculateChecksum(packetData):
     checksumTotal = 0
-    while packetData > 0:
-        currByte = packetData % 256
+    dataLength = len(packetData)
+    for x in range(0,dataLength):
+        currByte = packetData[-x]
         checksumTotal += currByte
-        packetData -= currByte
-        packetData = packetData / 256
-        print(packetData)
     checksumInverse = checksumTotal % 256
-    checksum = 256 - checksumInverse
+    checksum = 255 - checksumInverse
     return int(checksum)
-
 
 # loops to accept the incoming connection and file being sent from the client
 while True:
@@ -48,27 +45,39 @@ while True:
 
        #receive the packet and extract information from it
         rcvdPacket = connection.recv(1033)
-        rcvdSeqNumber = rcvdPacket[0:1]
-        rcvdChecksum = rcvdPacket[1:9]
-        rcvdData = rcvdPacket[10:]
+        rcvdSeqNumber = rcvdPacket[0]
+        rcvdChecksum = rcvdPacket[1]
+        rcvdData = rcvdPacket[2:]
 
         #determine if the packet was received properly via checksum. If yes, send ack, else send nack.
         calcChecksum = calculateChecksum(rcvdData)
+
         while True:
             if(calcChecksum == rcvdChecksum):
+               #if the checksums matched, send an ack and write the data
                 file.write(rcvdData)
                 positiveAck = str(rcvdSeqNumber) + str(rcvdSeqNumber) + str(rcvdSeqNumber)
                 encodedPositiveAck = positiveAck.encode()
                 connection.send(encodedPositiveAck)
                 break
             else:
-                negativeAck = str(~rcvdSeqNumber) + str(~rcvdSeqNumber) + str(~rcvdSeqNumber)
+                #if they dont, send a nack and receive a new packet. Repeat until everything is fine
+                if rcvdSeqNumber == 1:
+                    rcvdSeqNumber = 0
+                else:
+                    rcvdSeqNumber = 1
+                negativeAck = str(rcvdSeqNumber) + str(rcvdSeqNumber) + str(rcvdSeqNumber)
                 encodedNegativeAck = negativeAck.encode()
                 connection.send(encodedNegativeAck)
+
+               #receive a new packet
+                errorDeteced_string = f"Receiving retransmitted packet #{x} from client..."
+                print(errorDeteced_string)
+
                 rcvdPacket = connection.recv(1033)
-                rcvdSeqNumber = rcvdPacket[0:1]
-                rcvdChecksum = rcvdPacket[1:9]
-                rcvdData = rcvdPacket[10:]
+                rcvdSeqNumber = rcvdPacket[0]
+                rcvdChecksum = rcvdPacket[1]
+                rcvdData = rcvdPacket[2:]
                 calcChecksum = calculateChecksum(rcvdData)
 
     connection.close()
